@@ -8,7 +8,7 @@ super + Return
 
 # program launcher
 super + @space
-	dmenu_run
+	bash -c 'source /home/deep/.bashrc && dmenu_run -i'
 
 # make sxhkd reload its configuration files:
 super + shift + c
@@ -16,19 +16,29 @@ super + shift + c
 	$HOME/.config/polybar/launch.sh
 
 # Volume settings
-
 XF86AudioRaiseVolume
-        amixer sset Master 10%+
+	amixer sset Master 10%+
 
 XF86AudioLowerVolume
-        amixer sset Master 10%-
+	amixer sset Master 10%-
 
 XF86AudioMute
-        amixer sset Master toggle
+	amixer sset Master toggle
 
-# 
-XF86Audio{Prev,Next}
-        playerctl {prev,next}
+#
+XF86AudioPrev
+	playerctl previous || audacious -f
+
+XF86AudioNext
+	playerctl next || audacious -r
+
+XF86AudioPlay
+	playerctl play-pause || audacious -t
+
+# screenshot
+super + shift + s
+	flameshot gui
+
 
 #
 # bspwm hotkeys
