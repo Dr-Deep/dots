@@ -1,6 +1,5 @@
 # .bashrc
 
-# https://github.com/panxc1/
 
 # My bash config. Not much to see here; just some pretty standard stuff.
 
@@ -8,15 +7,17 @@
 # past this point for scp and rcp, and it's important to refrain from
 # outputting anything in those cases.
 if [[ $- != *i* ]] ; then
-	# Shell is non-interactive.  Be done now!
+	# Shell is non-interactive.
 	return
 fi
 
 ### PROMPT
 PS1='\[\e[0m\]┌─\[\e[0m\][\[\e[0m\]\u\[\e[0m\]@\[\e[0m\]\h\[\e[0m\]]\[\e[0m\]-\[\e[0m\][\[\e[0m\]\w\[\e[0m\]]\n\[\e[0m\]└──╼\[\e[0m\][\[\e[0m\]\$\[\e[0m\]]\[\e[0m\]> \[\e[0m\]'
 
-export PATH=$PATH:$HOME/.local/bin
+# Terminal issues with SSH
+[ "$TERM" = "xterm-kitty" ] && alias ssh="TERM='xterm' ssh"
 
+export PATH=$HOME/.local/bin:$PATH
 export EDITOR="nano"     # $EDITOR use Nano in terminal
 
 ### ARCHIVE EXTRACTION
@@ -45,6 +46,8 @@ extract () {
   fi
 }
 
+alias cat='/usr/bin/bat'
+#export MANPAGER='/usr/bin/bat'
 
 # Global aliases
 alias '...'='../..'
@@ -88,3 +91,6 @@ alias psa="ps auxf"
 alias psgrep="ps aux | grep -v grep | grep -i -e VSZ -e"
 alias psmem='ps auxf | sort -nr -k 4'
 alias pscpu='ps auxf | sort -nr -k 3'
+
+#
+export OO_PS4_TOOLCHAIN='~/Workspace/PS4Toolchain/'
