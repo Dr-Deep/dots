@@ -64,8 +64,9 @@ modules-center = xwindow
 modules-right = root-fs home-fs alsa memory swap-memory wlan cpu temperature date
 
 separator = |
-tray-position = none
+tray-position = center
 tray-padding = 2
+tray-offset-x = -160
 ;tray-background = #0063ff
 
 ;wm-restack = bspwm
