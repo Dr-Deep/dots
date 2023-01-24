@@ -61,7 +61,7 @@ font-6 = Font Awesome 5 Brands Regular:style=Regular:pixelsize=12;2
 
 modules-left = bspwm
 modules-center = xwindow
-modules-right = root-fs home-fs alsa memory swap-memory wlan cpu temperature date
+modules-right = root-fs home-fs alsa memory swap-memory wlan gpu cpu temperature date
 
 separator = |
 tray-position = center
@@ -128,10 +128,6 @@ label-empty = %index%
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 2
 
-; Separator in between workspaces
-; label-separator = |
-
-
 
 [module/cpu]
 type = internal/cpu
@@ -140,6 +136,15 @@ format-prefix = "cpu"
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #f90000
 label = %percentage:2%%
+
+
+[module/gpu]
+type = custom/script
+exec = ~/.config/polybar/scripts/nvidia-gpu-usage.sh
+interval = 2
+format-prefix = "gpu "
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = #f90000
 
 
 [module/memory]
