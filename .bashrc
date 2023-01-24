@@ -20,6 +20,9 @@ PS1='\[\e[0m\]┌─\[\e[0m\][\[\e[0m\]\u\[\e[0m\]@\[\e[0m\]\h\[\e[0m\]]\[\e[0m\
 export PATH=$HOME/.local/bin:$PATH
 export EDITOR="nano"     # $EDITOR use Nano in terminal
 
+# doas
+complete -cf doas
+
 ### ARCHIVE EXTRACTION
 # usage: extract <file>
 extract () {
@@ -45,8 +48,6 @@ extract () {
     echo "'$1' is not a valid file"
   fi
 }
-
-alias cat='/usr/bin/bat'
 
 # Global aliases
 alias '...'='../..'
