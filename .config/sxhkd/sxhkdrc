@@ -1,31 +1,34 @@
 #
-# wm independent hotkeys
+# 
 #
 
-# terminal emulator
+# Terminal Emulator
 super + Return
 	kitty
 
-# program launcher
+# Program Launcher
 super + @space
 	bash -c 'source /home/deep/.bashrc && dmenu_run -i'
+
+# Rofi
+super + r
+	rofi -show drun
 
 # make sxhkd reload its configuration files:
 super + shift + c
 	pkill -USR1 -x sxhkd
-	$HOME/.config/polybar/launch.sh
 
 # Volume settings
 XF86AudioRaiseVolume
-	amixer sset Master 10%+
+	pactl set-sink-volume @DEFAULT_SINK@ +5%
 
 XF86AudioLowerVolume
-	amixer sset Master 10%-
+	pactl set-sink-volume @DEFAULT_SINK@ -5%
 
 XF86AudioMute
-	amixer sset Master toggle
+	pactl set-sink-mute @DEFAULT_SINK@ toggle
 
-#
+# 
 XF86AudioPrev
 	playerctl previous || audacious -f
 
