@@ -40,11 +40,13 @@ fi
 
 if [ -n "$failsafe" ]; then
     feh --bg-fill ~/Bilder/background.jpg &
-    picom --experimental-backends --backend glx --xrender-sync-fence --daemon
+    picom --experimental-backends --xrender-sync-fence --daemon
+    dunst &
     gentoo-pipewire-launcher &
     sleep 3 # wait for pipewire
-    ~/.config/polybar/launch.sh
+    ~/.config/polybar/launch.sh &
     setxkbmap de
+    pgrep -x sxhkd > /dev/null || sxhkd &
     exec bspwm
 else
     exec $command
